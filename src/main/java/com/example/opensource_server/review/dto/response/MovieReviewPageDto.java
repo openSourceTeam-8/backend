@@ -1,6 +1,7 @@
 package com.example.opensource_server.review.dto.response;
 
 import com.example.opensource_server.movie.domain.Movie;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "선택한 영화 리뷰 페이지 응답 DTO")
 public class MovieReviewPageDto {
     private String title;   //영화제목
     private LocalDate releaseYear;  //개봉년도
@@ -23,8 +25,10 @@ public class MovieReviewPageDto {
     private String director;    //감독
     private String movieRating; //등급(전체관람가,12세,..)
     private int reviewCount;    //리뷰 개수
+    @Schema(description = "평점 평균 (소수점 둘째 자리)", example = "8.75")
     private float avgScore; //평점 평균
     private List<String> thumbnails;    //썸네일(영화포스터)
+    @Schema(description = "해당 영화에 달린 리뷰들")
     private List<ReviewDto> reviews;  //리뷰
 
     public static MovieReviewPageDto fromEntity(Movie movie, List<ReviewDto> reviewDtos) {
