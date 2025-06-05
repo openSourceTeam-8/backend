@@ -16,6 +16,7 @@ public class ReviewCreateResponseDto {//리뷰 작성 후 화면에 표시되는
     private LocalDateTime createdAt;
     private String nickname;
     private String reviewContents;
+    private int score;  //영화 별점
 
     // Review 엔티티를 ReviewCreateResponseDto로 변환
     public static ReviewCreateResponseDto fromEntity(Review review) {
@@ -23,6 +24,7 @@ public class ReviewCreateResponseDto {//리뷰 작성 후 화면에 표시되는
                 .createdAt(review.getCreatedAt())
                 .nickname(review.getNickname())
                 .reviewContents(review.getReviewContents())
+                .score(review.getScore())
                 .build();
     }
 }
