@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public class ResponseFrom {
+public class ResponseForm {
 
-    public ResponseFrom() {
+    public ResponseForm() {
         response = new HashMap<>();
     }
 
