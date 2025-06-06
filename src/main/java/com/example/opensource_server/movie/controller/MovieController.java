@@ -17,4 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Movie API", description = "영화 관련 API")
 public class MovieController {
 
+    private final MovieService movieService;
+
+    @Operation(summary = "장르별 영화 조회")
+    @PostMapping("/by-genre")
+    public ResponseEntity lookupMoviesByGenre(@RequestBody MovieByGenreRequestDTO movieByGenreRequestDto) {
+        return movieService.provideMoviesByGenre(movieByGenreRequestDto);
+    }
+
 }
