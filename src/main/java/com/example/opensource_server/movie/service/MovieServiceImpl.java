@@ -1,7 +1,7 @@
 package com.example.opensource_server.movie.service;
 
-import com.example.opensource_server.config.dto.ResponseForm;
-import com.example.opensource_server.config.handler.ResponseHandler;
+import com.example.opensource_server.common.dto.ResponseForm;
+import com.example.opensource_server.common.handler.ResponseHandler;
 import com.example.opensource_server.movie.dao.MovieRepository;
 import com.example.opensource_server.movie.domain.Movie;
 import com.example.opensource_server.movie.dto.request.MovieByGenreRequestDTO;

@@ -1,4 +1,4 @@
-package com.example.opensource_server.config.dto;
+package com.example.opensource_server.common.dto;
 
 import lombok.Builder;
 import lombok.Getter;
