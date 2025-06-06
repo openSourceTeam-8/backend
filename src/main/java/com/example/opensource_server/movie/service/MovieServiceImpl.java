@@ -86,4 +86,19 @@ public class MovieServiceImpl implements MovieService{
                 .limit(10)
                 .toList();
     }
+
+    public List<MovieReviewPageDto> getLatestReleasedMovies() {
+        List<Movie> movies = movieRepository.findAll();
+
+        return movies.stream()
+                .sorted(Comparator.comparing(Movie::getReleaseYear).reversed())
+                .map(movie -> {
+                    List<ReviewDto> reviewDtos = movie.getReviews().stream()
+                            .map(ReviewDto::fromEntity)
+                            .toList();
+
+                    return MovieReviewPageDto.fromEntity(movie, reviewDtos);
+                })
+                .toList();
+    }
 }

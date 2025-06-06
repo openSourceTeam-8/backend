@@ -13,5 +13,6 @@ public interface MovieService {
 
     ResponseEntity provideMoviesByCountry(MovieByCountryRequestDTO movieByCountryRequestDTO);
     List<MovieReviewPageDto> getTop10ReviewedMovies();
+    List<MovieReviewPageDto> getLatestReleasedMovies();
 
 }
