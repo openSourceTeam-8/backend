@@ -1,7 +1,7 @@
-package com.example.opensource_server.config.handler;
+package com.example.opensource_server.common.handler;
 
-import com.example.opensource_server.config.dto.DetailResponse;
-import com.example.opensource_server.config.dto.ResponseForm;
+import com.example.opensource_server.common.dto.DetailResponse;
+import com.example.opensource_server.common.dto.ResponseForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
