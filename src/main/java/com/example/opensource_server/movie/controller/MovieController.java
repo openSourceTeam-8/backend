@@ -3,14 +3,14 @@ package com.example.opensource_server.movie.controller;
 import com.example.opensource_server.movie.dto.request.MovieByCountryRequestDTO;
 import com.example.opensource_server.movie.dto.request.MovieByGenreRequestDTO;
 import com.example.opensource_server.movie.service.MovieService;
+import com.example.opensource_server.review.dto.response.MovieReviewPageDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,5 +31,12 @@ public class MovieController {
     public ResponseEntity lookuoMovieByCountry(@RequestBody MovieByCountryRequestDTO movieByCountryRequestDTO) {
         return movieService.provideMoviesByCountry(movieByCountryRequestDTO);
     }
+    @Operation(summary = "관람평 TOP 10 영화 조회")
+    @GetMapping("/top10-movies")
+    public ResponseEntity<List<MovieReviewPageDto>> getTop10ReviewedMovies() {
+        return ResponseEntity.ok(movieService.getTop10ReviewedMovies());
+    }
+
+
 
 }

@@ -1,6 +1,6 @@
 package com.example.opensource_server.movie.dto.response;
 
-import com.example.opensource.review.dto.response.SummaryReviewResponseDTO;
+import com.example.opensource_server.review.dto.response.SummaryReviewResponseDTO;
 import com.example.opensource_server.movie.domain.Movie;
 
 public record FilteredMoviesResponseDTO(

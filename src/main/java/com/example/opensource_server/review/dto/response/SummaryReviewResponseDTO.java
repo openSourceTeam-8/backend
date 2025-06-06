@@ -1,4 +1,4 @@
-package com.example.opensource.review.dto.response;
+package com.example.opensource_server.review.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
