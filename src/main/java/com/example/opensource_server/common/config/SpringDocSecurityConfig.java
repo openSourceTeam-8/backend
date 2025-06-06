@@ -10,16 +10,12 @@ public class SpringDocSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable()) // CSRF 비활성화 (테스트용)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html"
-                        ).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // 모든 요청을 인증 없이 허용
                 )
-                .httpBasic(httpBasic -> {}) // HTTP Basic 인증 사용
-                .formLogin(form -> {});     // 폼 로그인 허용
+                .httpBasic(httpBasic -> httpBasic.disable()) // HTTP Basic 비활성화
+                .formLogin(form -> form.disable());          // 폼 로그인 비활성화
 
         return http.build();
     }
