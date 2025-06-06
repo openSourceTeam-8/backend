@@ -1,5 +1,6 @@
 package com.example.opensource_server.movie.controller;
 
+import com.example.opensource_server.movie.dto.request.MovieByCountryRequestDTO;
 import com.example.opensource_server.movie.dto.request.MovieByGenreRequestDTO;
 import com.example.opensource_server.movie.service.MovieService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,6 +24,12 @@ public class MovieController {
     @PostMapping("/by-genre")
     public ResponseEntity lookupMoviesByGenre(@RequestBody MovieByGenreRequestDTO movieByGenreRequestDto) {
         return movieService.provideMoviesByGenre(movieByGenreRequestDto);
+    }
+
+    @Operation(summary = "국가별 영화 조회")
+    @PostMapping("/by-country")
+    public ResponseEntity lookuoMovieByCountry(@RequestBody MovieByCountryRequestDTO movieByCountryRequestDTO) {
+        return movieService.provideMoviesByCountry(movieByCountryRequestDTO);
     }
 
 }
