@@ -4,6 +4,7 @@ import com.example.opensource_server.config.dto.ResponseForm;
 import com.example.opensource_server.config.handler.ResponseHandler;
 import com.example.opensource_server.movie.dao.MovieRepository;
 import com.example.opensource_server.movie.domain.Movie;
+import com.example.opensource_server.movie.dto.request.MovieByCountryRequestDTO;
 import com.example.opensource_server.movie.dto.request.MovieByGenreRequestDTO;
 import com.example.opensource_server.movie.dto.response.FilteredMoviesResponseDTO;
 import com.example.opensource_server.review.domain.Review;
@@ -27,6 +28,19 @@ public class MovieServiceImpl implements MovieService{
     public ResponseEntity provideMoviesByGenre(MovieByGenreRequestDTO movieByGenreRequestDto) {
         try {
             List<Movie> movies = movieRepository.findByGenre(movieByGenreRequestDto.genre());
+            List<FilteredMoviesResponseDTO> response = filterAndConvert(movies);
+            return ResponseHandler.create200Response(new ResponseForm(), response);
+        } catch (RuntimeException e) {
+            return ResponseHandler.create404Error(new ResponseForm(), e);
+        } catch (Exception e) {
+            return ResponseHandler.create500Error(new ResponseForm(), e);
+        }
+    }
+
+    @Override
+    public ResponseEntity provideMoviesByCountry(MovieByCountryRequestDTO movieByCountryRequestDTO) {
+        try {
+            List<Movie> movies = movieRepository.findByNation(movieByCountryRequestDTO.country());
             List<FilteredMoviesResponseDTO> response = filterAndConvert(movies);
             return ResponseHandler.create200Response(new ResponseForm(), response);
         } catch (RuntimeException e) {
