@@ -1,6 +1,7 @@
 package com.example.opensource_server.review.dto.response;
 
 import com.example.opensource_server.review.domain.Review;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,8 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReviewCreateResponseDto {//리뷰 작성 후 화면에 표시되는 내용
+@Schema(description = "리뷰 작성 후 화면에 표시되는 응답 DTO")
+public class ReviewCreateResponseDto {
     private LocalDateTime createdAt;
     private String nickname;
     private String reviewContents;
